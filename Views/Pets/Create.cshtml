@@ -1,0 +1,56 @@
+﻿@model VetCare_Animal_Clinic.Models.Pet
+
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Pet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PetName" class="control-label"></label>
+                <input asp-for="PetName" class="form-control" />
+                <span asp-validation-for="PetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="AnimalType" class="control-label"></label>
+                @Html.DropDownList("AnimalType", ViewData["AnimalType"] as SelectList, "Select AnimalType", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Breed" class="control-label"></label>
+                <select asp-for="Breed" class="form-control" asp-items="ViewBag.Breed">
+                    <option value="Select Breed">Select Breed</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfBirth" class="control-label"></label>
+                <input asp-for="YearOfBirth" class="form-control" type="date" max="@DateTime.Now.ToString("yyyy-MM-dd")"/>
+                <span asp-validation-for="YearOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

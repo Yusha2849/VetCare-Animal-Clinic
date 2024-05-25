@@ -1,0 +1,66 @@
+﻿@model IEnumerable<VetCare_Animal_Clinic.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Appointment Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Date")
+            </th>
+            <th>
+                @Html.DisplayName("Time")
+            </th>
+            <th>
+                @Html.DisplayName("PetOwner ID")
+            </th>
+            <th>
+                @Html.DisplayName("Animal Type")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointment_Reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ATime)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pet.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pet.AnimalType)
+                </td>         
+            <td>
+                @Html.DisplayFor(modelItem => item.Appointment_Reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentStatus)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AppointmentID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AppointmentID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AppointmentID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

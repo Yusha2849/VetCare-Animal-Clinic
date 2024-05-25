@@ -1,0 +1,210 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'>
+    <title>VetCare Animal Clinic - Home</title>
+    <style>
+        body {
+            font-size: 18px; 
+            font-family: Calibri,helvetica;
+            margin: 0;
+            padding: 0;
+            background-color: #997950; 
+            color: #997950; 
+        }
+ 
+        header {
+            margin-top: 50px;
+            background-color: #DFD0C0;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 10px; 
+        }
+ 
+        h1 {
+            margin: 0;
+            font-family: 'EB Garamond';
+            font-size: 46px;
+            text-transform: uppercase;
+            color: #332211;
+        }
+ 
+        main {
+            padding: 20px;
+        }
+ 
+        .info-div {
+            background-color: #DFD0C0;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-family: 'EB Garamond'
+        }
+ 
+        .Reviews {
+            background-color: #DFD0C0;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-family: 'EB Garamond'
+        }
+ 
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+        }
+ 
+        .contact {
+            background-color: #DFD0C0;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-family: 'EB Garamond'
+        }
+ 
+        .google-map {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 50%;
+        }
+ 
+            .google-map iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+ 
+        .parallax {
+            background-image: url("/Images/Pets.png");
+            min-height: 500px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+ 
+        .hours-of-operation {
+            background-color: #DFD0C0;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-family: 'EB Garamond'
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><b>VetCare Animal Clinic 🐾 </b></h1>
+    </header>
+    <main>
+        <section>
+            <div class="parallax"></div>
+            <div class="info-div">
+                <h2 class="section-heading" style="color: #332211 " ;><b>YOUR PET HEALTH'S JOURNEY STARTS HERE!</b></h2>
+                <p class="experience-text">At PetCare Veterinary Clinic, we offer comprehensive healthcare and medical services for domestic pets of all kinds. Our modern facility is equipped with state-of-the-art medical equipment and staffed by a team of experienced veterinarians and caring support staff to ensure your beloved pet receives the best care possible.</p>
+                <p class="experience-text">Whether your pet needs treatment for injuries, vaccinations, wellness check-ups, or preventive care, our dedicated team is here to provide compassionate and professional veterinary services.</p>
+                <p class="experience-text">Enroll your pet in their path to optimal health today and experience top-quality pet care like no other!</p>
+            </div>
+        </section>
+ 
+        <section>
+            <div class="info-div">
+                <h2 class="section-heading" style="color: #332211; "><b>VETENARIAN SERVICES OFFERED</b></h2>
+ 
+                <div class="package-type">
+                    <h3 class="package-heading" style="color: #332211">INJURY TREATMENT</h3>
+                    <p>Comprehensive diagnosis and treatment plans</p>
+                    <p>Surgery and post-operative care</p>
+                    <p>Rehabilitation services</p>
+                </div>
+                <div class="package-type">
+                    <h3 class="package-heading" style="color: #332211">WELLNESS CARE</h3>
+                    <p>Regular check-ups and preventive care</p>
+                    <p>Vaccinations and parasite control</p>
+                    <p>Dental care and hygiene services</p>
+                </div>
+                <div class="package-type">
+                    <h3 class="package-heading" style="color: #332211">PET HEALTH PLANS</h3>
+                    <p>Customized health plans based on your pet's specific needs</p>
+                    <p>Regular monitoring and adjustments</p>
+                    <p>Emergency and after-hours care available</p>
+                </div>
+            </div>
+            <section>
+                <div style="text-align: center;">
+                    <img src="https://royaloakvethospital.com/wp-content/uploads/2017/09/RO-2.jpg" alt="Discounts" style="display: block; margin: 0 auto; max-width: 100%; height: auto; background-color: blanchedalmond;">
+                </div>
+                <h3></h3>
+            </section>
+        </section>
+ 
+        <section>
+            <div class="hours-of-operation">
+                <h2 class="hours-heading" style="color: #332211;"><b>HOURS OF OPERATION</b></h2>
+                <p class="main-hours">
+                </p>
+                <p>Mon: 8:00am - 6:00pm</p>
+                <p>Tue: 8:00am - 7:00pm</p>
+                <p>Wed: 8:00am - 7:00pm</p>
+                <p>Thu: 8:00am - 7:00pm</p>
+                <p>Fri: 8:00am - 7:00pm</p>
+                <p>Sat: 8:00am - 1:00pm</p>
+                <p>Sun: Closed</p>
+            </div>
+            <div class="contact">
+                <h2 class="contact-heading" style="color: #332211;"><b>CONTACT US:</b></h2>
+                <p class="contact-info">
+                    Address: 140 Adelaide Tambo Drive, Durban North, Kwa-Zulu Natal, South Africa, 4051
+                </p>
+                <p class="contact-info">Phone: +27 31-563-4581</p>
+                <p class="contact-info">Email: info@VetCareAnimalClinic.co.za</p>
+                <p>Visit us:</p>
+                <div class="google-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1952.6477533793775!2d31.04390621286622!3d-29.774115253038406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7071db3b19fe1%3A0x730b85bcb4331d9b!2s140%20Adelaide%20Tambo%20Dr%2C%20Durban%20North%2C%204051!5e0!3m2!1sen!2sza!4v1695923856660!5m2!1sen!2sza" width="50" height="5" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+ 
+ 
+        <section>
+            <div class="Reviews">
+                <h2 class="review-heading" style="color: #332211;"><b>CUSTOMER EXPERIENCE</b> </h2>
+                <h3 class="review-customer">Lady Gaga | Pet Owner</h3>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <style>
+                    .checked {
+                        color: #997950;
+                    }
+                </style>
+                <body>
+ 
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+ 
+ 
+                    <p class="review-text"><em>"I'm grateful for the excellent care my pet received at VetCare Veterinary Clinic. The staff are also really friendly and approachable."</em></p>
+                </body>
+ 
+            </div>
+        </section>
+    </main>
+ 
+ 
+</body>
+</html>

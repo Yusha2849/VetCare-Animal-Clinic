@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-size: 18px;
+            font-family: Calibri,helvetica;
+            margin: 0;
+            padding: 0;
+            background-color: #997950;
+            color: #997950;
+        }
+
+        header {
+            margin-top: 50px;
+            background-color: #DFD0C0;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: 'EB Garamond';
+            font-size: 46px;
+            text-transform: uppercase;
+            color: #332211;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .info-div {
+            background-color: #DFD0C0;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-family: 'EB Garamond'
+        }
+
+        .Reviews {
+            background-color: #DFD0C0;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-family: 'EB Garamond'
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+        }
+
+        .contact {
+            background-color: #DFD0C0;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-family: 'EB Garamond'
+        }
+
+        .google-map {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 50%;
+        }
+
+            .google-map iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+
+        .parallax {
+            background-image: url("https://ddjkm7nmu27lx.cloudfront.net/752189/reviews/600x600/1686819103728.jpeg");
+            min-height: 500px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .hours-of-operation {
+            background-color: #DFD0C0;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-family: 'EB Garamond'
+        }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VetCare Animal Clinic</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/VetCare_Animal_Clinic.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">VetCare Animal Clinic</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pets" asp-action="Index">Pets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Appointments" asp-action="Index">Appointments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Visits" asp-action="Index">Visits</a>
+                        </li>
+
+                        @{
+                            bool isReceptionist = User.IsInRole("Receptionist");
+                        }
+
+                        @if (isReceptionist)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="AnimalTypes" asp-action="Index">Animal Types</a>
+                            </li>
+                        }
+
+                    </ul>
+                    <partial name="_LoginPartial" />
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - VetCare Animal Clinic - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

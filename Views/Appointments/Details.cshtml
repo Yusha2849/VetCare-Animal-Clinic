@@ -1,0 +1,67 @@
+﻿@model VetCare_Animal_Clinic.Models.Appointment
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Appointment</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+                        @Html.DisplayName("Date")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ADate)
+        </dd>
+        <dt class = "col-sm-2">
+                        @Html.DisplayName("Time")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ATime)
+        </dd>
+        <dt class = "col-sm-2">
+                        @Html.DisplayName("PetOwner Id")
+        </dt>
+        <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Pet.UserId)
+        </dd>
+                    <dt class="col-sm-2">
+            @Html.DisplayName("Pet Name")
+                    </dt>
+                    <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pet.PetName)
+                    </dd>
+                    <dt class="col-sm-2">
+            @Html.DisplayName("Animal Type")
+                    </dt>
+                    <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pet.AnimalType)
+                    </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayName("Breed")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pet.Breed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Appointment_Reason)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Appointment_Reason)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AppointmentStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AppointmentStatus)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AppointmentID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<VetCare_Animal_Clinic.Models.AnimalTypes>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimalType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Breed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Species)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnimalType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Breed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Species)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { animaltype=item.AnimalType, breed=item.Breed }) |
+                    @Html.ActionLink("Details", "Details", new { animaltype=item.AnimalType, breed=item.Breed }) |
+                    @Html.ActionLink("Delete", "Delete", new { animaltype=item.AnimalType, breed=item.Breed })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

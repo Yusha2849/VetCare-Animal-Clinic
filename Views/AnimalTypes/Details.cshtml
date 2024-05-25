@@ -1,0 +1,38 @@
+﻿@model VetCare_Animal_Clinic.Models.AnimalTypes
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Animal Types</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AnimalType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AnimalType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Breed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Breed)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Species)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Species)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { animaltype = Model.AnimalType, breed=Model.Breed }) |
+    <a asp-action="Index">Back to List</a>
+</div>

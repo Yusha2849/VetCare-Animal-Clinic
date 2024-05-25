@@ -1,0 +1,140 @@
+﻿@model VetCare_Animal_Clinic.Models.Appointment
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Appointment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ADate" class="control-label"></label>
+                <input asp-for="ADate" class="form-control" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="ADate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ATime" class="control-label"></label>
+                <select asp-for="ATime" class="form-control" id="selectedTime">
+                    <option value="">Select Time</option>
+                    <!-- The options will be populated dynamically using JavaScript -->
+                </select>
+                <span asp-validation-for="ATime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ADate" class="control-label">Day of the week</label>
+                <select id="selectedDay" class="form-control" disabled>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+            </div>
+            <script>
+                function populateTimeSlots() {
+                    const selectedDate = new Date(document.querySelector("input[type='date']").value);
+                    const selectedDay = selectedDate.toLocaleDateString("en-US", { weekday: "long" });
+
+                    document.getElementById('selectedDay').value = selectedDay;
+                    const workingHours = {
+                        Monday: { start: 8, end: 18 },
+                        Tuesday: { start: 8, end: 19 },
+                        Wednesday: { start: 8, end: 19 },
+                        Thursday: { start: 8, end: 19 },
+                        Friday: { start: 8, end: 19 },
+                        Saturday: { start: 8, end: 13 },
+                        Sunday: { start: 0, end: 0 }, // Closed
+                    };
+                }
+
+                document.querySelector("input[type='date']").addEventListener('change', populateTimeSlots);
+                populateTimeSlots();
+            </script>
+
+
+
+            <div class="form-group">
+                <label asp-for="PetID" class="control-label"></label>
+                <select asp-for="PetID" class="form-control" asp-items="ViewBag.PetID">
+                    <option value="">Select Pet</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Appointment_Reason" class="control-label"></label>
+                <input asp-for="Appointment_Reason" class="form-control" />
+                <span asp-validation-for="Appointment_Reason" class="text-danger"></span>
+            </div>
+
+            @if (User.IsInRole("Receptionist"))
+            {
+                <div class="form-group">
+                    <label class="control-label">Appointment Status (Receptionist)</label>
+                    <select asp-for="AppointmentStatus" class="form-control">
+                        <option value="Unseen">Unseen</option>
+                        <option value="Seen">Seen</option>
+                    </select>
+                    <span asp-validation-for="AppointmentStatus" class="text-danger"></span>
+                </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        const workingHours = {
+            Monday: { start: 8, end: 18 },
+            Tuesday: { start: 8, end: 19 },
+            Wednesday: { start: 8, end: 19 },
+            Thursday: { start: 8, end: 19 },
+            Friday: { start: 8, end: 19 },
+            Saturday: { start: 8, end: 13 },
+            Sunday: { start: 0, end: 0 }, // Closed
+        };
+
+        function populateTimeSlots() {
+            const selectedDay = document.getElementById('selectedDay').value;
+            const timeSelect = document.getElementById('selectedTime');
+            timeSelect.innerHTML = '';
+
+            const startHour = workingHours[selectedDay].start;
+            const endHour = workingHours[selectedDay].end;
+
+            if (selectedDay === 'Sunday') {
+                // Display an error message
+                timeSelect.innerHTML = '<option value="">Vet Is Closed, Please Select A New Date</option>';
+            } else {
+                for (let hour = startHour; hour <= endHour; hour++) {
+                    const time = `${hour.toString().padStart(2, '0')}:00`; // Use :00 to indicate full hours
+                    const option = document.createElement('option');
+                    option.value = time;
+                    option.textContent = time;
+                    timeSelect.appendChild(option);
+                }
+            }
+        }
+
+        document.querySelector("input[type='date']").addEventListener('change', populateTimeSlots);
+        populateTimeSlots();
+    </script>
+
+}
